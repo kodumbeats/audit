@@ -37,14 +37,13 @@ class Audit
         $this->db->createAttribute(Audit::COLLECTION, 'userAgent', Database::VAR_STRING, 65534, true);
         $this->db->createAttribute(Audit::COLLECTION, 'ip', Database::VAR_STRING, 45, true);
         $this->db->createAttribute(Audit::COLLECTION, 'location', Database::VAR_STRING, 45, false);
-        $this->db->createAttribute(Audit::COLLECTION, 'time', Database::VAR_INTEGER, 0, true, false);
-        $this->db->createAttribute(Audit::COLLECTION, 'data', Database::VAR_STRING, 16777216, false, true, false, ['json']);
+        $this->db->createAttribute(Audit::COLLECTION, 'time', Database::VAR_INTEGER, 0, true, null, false);
+        $this->db->createAttribute(Audit::COLLECTION, 'data', Database::VAR_STRING, 16777216, false, null, true, false, ['json']);
 
         $this->db->createIndex(Audit::COLLECTION, 'index1', Database::INDEX_KEY, ['userId']);
         $this->db->createIndex(Audit::COLLECTION, 'index2', Database::INDEX_KEY, ['event']);
         $this->db->createIndex(Audit::COLLECTION, 'index3', Database::INDEX_KEY, ['resource']);
         $this->db->createIndex(Audit::COLLECTION, 'index4', Database::INDEX_KEY, ['userId', 'event']);
-
     }
 
     /**
